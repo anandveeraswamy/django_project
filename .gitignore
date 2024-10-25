@@ -1,0 +1,6 @@
+# Ignore virtual environment directory
+venv/
+
+# Ignore coverage reports
+htmlcov/
+.coverage
