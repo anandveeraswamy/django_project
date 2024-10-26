@@ -4,3 +4,6 @@ venv/
 # Ignore coverage reports
 htmlcov/
 .coverage
+
+# Ignore .env file
+.env
