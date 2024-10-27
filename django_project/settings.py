@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
-from dotenv import load_dotenv
-load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -136,21 +134,14 @@ LOGIN_URL = 'login'
 MEDIA_ROOT = BASE_DIR / 'media' # Newer modern and Pythonic way
 MEDIA_URL = '/media/'
 
-EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
-EMAIL_HOST = os.getenv("EMAIL_HOST")
-EMAIL_PORT = int(os.getenv("EMAIL_PORT"))
-EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS") == "True"
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
-DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
-
-print(EMAIL_BACKEND)
-print(EMAIL_HOST)
-print(EMAIL_PORT)
-print(EMAIL_USE_TLS)
-print("user" + EMAIL_HOST_USER)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'anandveeraswamy@gmail.com' # Login email address, Stored as an environment varaible
+# EMAIL_HOST_PASSWORD = 'srbm mhjp zscn iqtg'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER') # Login email address, Stored as an environment varaible
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+print(EMAIL_HOST_USER)
 print(EMAIL_HOST_PASSWORD)
-print(DEFAULT_FROM_EMAIL)
-
-
 
