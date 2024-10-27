@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)k492et36_^e^mia%65zhaba^&lerd8jnp9b4)wwx(w_oh#7g^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['crowded-vampire-g44ww9vw5j29xr5-8000.app.github.dev']
 
 
 # Application definition
@@ -134,14 +134,12 @@ LOGIN_URL = 'login'
 MEDIA_ROOT = BASE_DIR / 'media' # Newer modern and Pythonic way
 MEDIA_URL = '/media/'
 
+DEFAULT_FROM_EMAIL = 'your-email@example.com' # 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'anandveeraswamy@gmail.com' # Login email address, Stored as an environment varaible
-# EMAIL_HOST_PASSWORD = 'srbm mhjp zscn iqtg'
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER') # Login email address, Stored as an environment varaible
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-print(EMAIL_HOST_USER)
-print(EMAIL_HOST_PASSWORD)
+PASSWORD_RESET_TIMEOUT = 86400 # Timeout in seconds (24 hours here)
 
