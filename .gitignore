@@ -5,5 +5,8 @@ venv/
 htmlcov/
 .coverage
 
+# Ignore pycache
+__pycache__/
+
 # Ignore .env file
 .env
