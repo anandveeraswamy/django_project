@@ -30,7 +30,7 @@ DEBUG = os.environ.get('DEBUG') == 'TRUE'
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'damp-hobgoblin-x69q6wp944h69v7.github.dev',os.environ.get('RENDER_HOSTNAME', '')]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'damp-hobgoblin-x69q6wp944h69v7.github.dev',os.environ.get('RENDER_HOSTNAME', ''), 'scary-phantasm-564p6qrgw6c4rp5-8000.app.github.dev']
 
 
 # Application definition
@@ -139,8 +139,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 CRISPY_FAIL_SILENTLY = not DEBUG
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
-MEDIA_ROOT = BASE_DIR / 'media' # Newer modern and Pythonic way
-MEDIA_URL = '/media/'
 
 DEFAULT_FROM_EMAIL = 'your-email@example.com' #
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -149,3 +147,22 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') # Login email address, Stored as an environment varaible
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
+AWS_QUERYSTRING_AUTH = False  # Makes URLs publicly accessible
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
+
+
+# MEDIA_ROOT = BASE_DIR / 'media' # Newer modern and Pythonic way removed
+# MEDIA_URL = '/media/' removed
+# Use S3 for media files
+# print(AWS_ACCESS_KEY_ID)
+# print(AWS_SECRET_ACCESS_KEY)
+# print(AWS_STORAGE_BUCKET_NAME)
+# print(AWS_S3_REGION_NAME)
+# print(AWS_QUERYSTRING_AUTH)
+# print(MEDIA_URL)
